@@ -26,17 +26,25 @@ public class NameChecker {
         student.setName(scanner.nextLine());
         checkAnswer(student.getName());
 
+
         System.out.println(languageChooser.getBundle().getString("surname"));
         student.setSurname(scanner.nextLine());
         checkAnswer(student.getSurname());
     }
 
 
-    private void checkAnswer(String string) {
-        Pattern pattern = Pattern.compile("\\d+");
-        Matcher matcher = pattern.matcher(string);
-        if (string.equals("") || matcher.lookingAt()) {
-            throw new IllegalArgumentException(languageChooser.getBundle().getString("wrongInfo"));
+
+//    private void checkAnswer(String string) {
+//        Pattern pattern = Pattern.compile("\\d+");
+//        Matcher matcher = pattern.matcher(string);
+//        if (string.equals("") || matcher.lookingAt()) {
+//            throw new IllegalArgumentException(languageChooser.getBundle().getString("wrongInfo"));
+//        }
+
+        private void checkAnswer(String string) {
+            if (student.getName().isEmpty() || student.getSurname().isEmpty()) {
+                throw new IllegalArgumentException(languageChooser.getBundle().getString("Sorry, the field cannot be empty"));
+            }
         }
     }
-}
+//}
